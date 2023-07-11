@@ -47,6 +47,7 @@ const Header = () => {
     return (
         <header className={`w-full h-[50px] md:h-[80px] bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}>
             <Wrapper className="h-[60px] flex justify-between items-center">
+                {/* Logo */}
                 <Link href="/" className="ml-6">
                     <div className="flex flex-row">
                         <img src="/logo-only.png" className="w-[40px] md:w-[60px]" alt="logo" />
@@ -54,6 +55,7 @@ const Header = () => {
                     </div>
                 </Link>
 
+                {/* Menu with the Links */}
                 <Menu
                     showCatMenu={showCatMenu}
                     setShowCatMenu={setShowCatMenu}
