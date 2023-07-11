@@ -21,25 +21,25 @@ const Header = () => {
     const controlNavbar = () => {
         if (window.scrollY > 200) {
             if (window.scrollY > lastScrollY && !mobileMenu) {
-                setShow ("-translate-y-[80px]");
+                setShow("-translate-y-[80px]");
             }
             else {
-                setShow ("shadow-sm");
+                setShow("shadow-sm");
             }
         }
         else {
-            setShow ("translate-y-0");
+            setShow("translate-y-0");
         }
 
-        setLastScrollY (window.scrollY);
+        setLastScrollY(window.scrollY);
     }
     // When scrolled the function will be called which shall update the value of scroll amount is the variable lastScrollY. When the scroll amount is less than 200 no change is brought on. When scrolled more than 200, '-translate-y-[80px]' is added to the menu which translated the menu upwards and hence hiding it. When the scroll amount starts decreasing, that is we start scrolling upwards the header appears again.
 
-    useEffect (() => {
-        window.addEventListener ("scroll", controlNavbar);
+    useEffect(() => {
+        window.addEventListener("scroll", controlNavbar);
 
         return () => {
-            window.removeEventListener ("scroll", controlNavbar)
+            window.removeEventListener("scroll", controlNavbar)
         }
     }, [lastScrollY])
     // This function is activated whenever the page is scrolled. When scrolled controlNavbar() function is called
@@ -78,15 +78,17 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+                    <Link href="/cart">
+                        <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
 
-                        <AiOutlineShoppingCart className="text-[20px] md:text-[30px]" />
-                        <div className="h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
-                            5
+                            <AiOutlineShoppingCart className="text-[20px] md:text-[30px]" />
+                            <div className="h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
+                                5
+                            </div>
                         </div>
-                    </div>
+                    </Link>
 
-                    <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative -mr-2">
+                    <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative -mr-2">
                         {mobileMenu ? (
                             <VscChromeClose
                                 className="text-[16px]"
