@@ -39,22 +39,23 @@ const Category = ({ category, slug }) => {
 export default Category;
 
 // export async function getStaticPaths() {
-//     const category = await fetchDataFromApi ("/products/categories");
+//     const category = await fetchDataFromApi("/products/categories");
 
 //     const paths = category.data?.map((c) => ({
 //         params: {
-//             slug: c
+//             slug: String(c) // Ensure slug is a string
 //         }
 //     }));
 
-//     console.log ("Paths");
-//     console.log (paths);
+//     console.log("Paths");
+//     console.log(paths);
 
 //     return {
-//         paths,
+//         paths: paths || [], // Ensure paths is always an array
 //         fallback: false
 //     };
 // }
+
 
 // export async function getStaticProps({ params: { slug } }) {
 //     const category = await fetchDataFromApi (`/products/category/${slug}`);

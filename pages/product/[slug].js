@@ -99,7 +99,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
                 
-                <RelatedProducts />
+                {/* <RelatedProducts /> */}
             </Wrapper>
         </div>
     )

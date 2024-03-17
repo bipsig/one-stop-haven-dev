@@ -12,7 +12,7 @@ const ProductCard = ({ id, data }) => {
 
     return (
         <Link
-            href="/"
+            href={`/product/${data.id}`}
             className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer block mx-4 xl:mx-20"
         >
             <div className="relative" style={{ width: '300px', height: '400px' }}>
