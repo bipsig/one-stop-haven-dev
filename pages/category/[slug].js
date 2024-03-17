@@ -38,17 +38,17 @@ const Category = () => {
 
 export default Category;
 
-export getStaticPaths = async () => {
-    const category = await fetchDataFromApi ("/products/categories");
+// export getStaticPaths = async () => {
+//     const category = await fetchDataFromApi ("/products/categories");
 
-    const paths = category.data.map((c) => ({
-        params: {
-            slug: c
-        }
-    }))
+//     const paths = category.data.map((c) => ({
+//         params: {
+//             slug: c
+//         }
+//     }))
 
-    return {
-        paths,
-        fallback: false
-    }
-}
+//     return {
+//         paths,
+//         fallback: false
+//     }
+// }
