@@ -10,6 +10,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { VscChromeClose } from "react-icons/vsc";
 import { CgMenuRight } from "react-icons/cg";
+import { fetchDataFromApi } from "@/utils/api";
 
 const Header = () => {
 
@@ -17,6 +18,7 @@ const Header = () => {
     const [showCatMenu, setShowCatMenu] = useState(false);
     const [show, setShow] = useState("translate-y-0");
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [categories, setCatgories] = useState (null);
 
     const controlNavbar = () => {
         if (window.scrollY > 200) {
@@ -44,14 +46,29 @@ const Header = () => {
     }, [lastScrollY])
     // This function is activated whenever the page is scrolled. When scrolled controlNavbar() function is called
 
+    useEffect(() => {
+        fetchCategories();
+    }, [])
+
+    const fetchCategories = async () => {
+        try {
+            const response = await fetchDataFromApi("/products/categories");
+            // console.log("Categories Data received:", response);
+            setCatgories(response);
+            // console.log (data);
+        } catch (error) {
+            console.error("Error fetching products:", error);
+        }
+    }
+
     return (
         <header className={`w-full h-[50px] md:h-[80px] bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}>
             <Wrapper className="h-[60px] flex justify-between items-center">
                 {/* Logo */}
                 <Link href="/" className="ml-6">
                     <div className="flex flex-row">
-                        <img src="/logo-only.png" className="w-[40px] md:w-[60px]" alt="logo" />
-                        <img src="/logo-text.png" className="w-[40px] md:w-[60px]" alt="logo" />
+                        <img src="/new-logo-only.png" className="w-[40px] md:w-[60px] mr-2" alt="logo" />
+                        <img src="/new-logo-text.png" className="w-[40px] md:w-[60px]" alt="logo" />
                     </div>
                 </Link>
 
@@ -59,6 +76,7 @@ const Header = () => {
                 <Menu
                     showCatMenu={showCatMenu}
                     setShowCatMenu={setShowCatMenu}
+                    categories={categories}
                 />
 
                 {mobileMenu && (
@@ -66,6 +84,7 @@ const Header = () => {
                         showCatMenu={showCatMenu}
                         setShowCatMenu={setShowCatMenu}
                         setMobileMenu={setMobileMenu}
+                        categories={categories}
                     />
                 )}
 

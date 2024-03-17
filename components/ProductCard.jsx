@@ -1,31 +1,43 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { getDiscountPercent, getMarkedPrice, getSellingPrice } from '@/utils/helper';
 
-const ProductCard = () => {
+const ProductCard = ({ id, data }) => {
+
+    const generateDiscount = () => {
+        return Math.floor(Math.random() * (50 - 10 + 1)) + 10;
+    }
+    const discountPercent = generateDiscount();
+
     return (
-        <Link 
-            href = "/product/1"
-            className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
+        <Link
+            href="/product/1"
+            className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer block mx-4 xl:mx-20"
         >
-            <img
-                className="w-full"
-                src="/product-1.webp" 
-                alt="Product Image" 
-            />
+            <div className="relative" style={{ width: '300px', height: '400px' }}>
+                <Image
+                    layout="fill"
+                    objectFit="contain"
+                    src={data.image}
+                    alt={data.title}
+                />
+            </div>
+
             <div className="p-4 text-black/[0.9]">
                 <h2 className="text-lg font-medium">
-                    Product Name
+                    {data.title}
                 </h2>
 
                 <div className="flex items-center text-black/[0.5]">
                     <p className="mr-2 text-lg font-semibold">
-                        Rs. 1000
+                        Rs. {getSellingPrice(getMarkedPrice(data.price), discountPercent).toFixed(2)}
                     </p>
                     <p className="text-base font-medium line-through">
-                        Rs. 1500
+                        Rs. {getMarkedPrice(data.price).toFixed(2)}
                     </p>
                     <p className="ml-auto text-base font-medium text-green-500">
-                        33% off
+                        {discountPercent.toFixed(2)}% off
                     </p>
                 </div>
             </div>

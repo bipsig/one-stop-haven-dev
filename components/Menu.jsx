@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { IoMdArrowDropdown } from "react-icons/io";
+import { generateSubmenuData } from '@/utils/helper';
 
 const data = [
     { id: 1, name: "Home", url: "/" },
@@ -9,14 +10,17 @@ const data = [
     { id: 4, name: "Contact", url: "/contact" },
 ];
 
-const subMenuData = [
-    { id: 1, name: "Jordan", doc_count: 11 },
-    { id: 2, name: "Sneakers", doc_count: 8 },
-    { id: 3, name: "Running Shoes", doc_count: 64 },
-    { id: 4, name: "Football Shoes", doc_count: 107 },
-];
+// const subMenuData = [
+//     { id: 1, name: "Jordan", doc_count: 11 },
+//     { id: 2, name: "Sneakers", doc_count: 8 },
+//     { id: 3, name: "Running Shoes", doc_count: 64 },
+//     { id: 4, name: "Football Shoes", doc_count: 107 },
+// ];
 
-const Menu = ({ showCatMenu, setShowCatMenu }) => {
+const Menu = ({ showCatMenu, setShowCatMenu, categories }) => {
+    
+    const subMenuData = generateSubmenuData (categories);
+
     return (
         <ul className="hidden md:flex items-center gap-8 font-medium text-black">
             {data.map((item) => {
@@ -34,7 +38,7 @@ const Menu = ({ showCatMenu, setShowCatMenu }) => {
 
                                     {showCatMenu && (
                                         <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
-                                            {subMenuData.map((submenu) => {
+                                            {subMenuData?.map((submenu) => {
                                                 return (
                                                     <Link 
                                                         key={submenu.id} 
@@ -43,9 +47,9 @@ const Menu = ({ showCatMenu, setShowCatMenu }) => {
                                                     >
                                                         <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
                                                             {submenu.name}
-                                                            <span className="opacity-50 text-sm">
+                                                            {/* <span className="opacity-50 text-sm">
                                                                 {submenu.doc_count}
-                                                            </span>
+                                                            </span> */}
                                                         </li>
                                                     </Link>
                                                 )

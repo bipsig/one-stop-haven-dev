@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { IoMdArrowDropdown } from "react-icons/io";
+import { generateSubmenuData } from '@/utils/helper';
 
 const data = [
     { id: 1, name: "Home", url: "/" },
@@ -9,14 +10,16 @@ const data = [
     { id: 4, name: "Contact", url: "/contact" },
 ];
 
-const subMenuData = [
-    { id: 1, name: "Jordan", doc_count: 11 },
-    { id: 2, name: "Sneakers", doc_count: 8 },
-    { id: 3, name: "Running Shoes", doc_count: 64 },
-    { id: 4, name: "Football Shoes", doc_count: 107 },
-];
+// const subMenuData = [
+//     { id: 1, name: "Jordan", doc_count: 11 },
+//     { id: 2, name: "Sneakers", doc_count: 8 },
+//     { id: 3, name: "Running Shoes", doc_count: 64 },
+//     { id: 4, name: "Football Shoes", doc_count: 107 },
+// ];
 
-const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu }) => {
+const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu, categories }) => {
+    const subMenuData = generateSubmenuData (categories);
+
     return (
         <div className="md:hidden font-bold absolute top-[50px] left-0 w-full bg-white border-t text-black">
             <ul className="flex flex-col">
@@ -47,9 +50,9 @@ const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu }) => {
                                                     >
                                                         <li className="py-4 px-8 border-t flex justify-between">
                                                             {submenu.name}
-                                                            <span className="opacity-50 text-sm">
+                                                            {/* <span className="opacity-50 text-sm">
                                                                 {submenu.doc_count}
-                                                            </span>
+                                                            </span> */}
                                                         </li>
                                                     </Link>
                                                 );

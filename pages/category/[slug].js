@@ -2,6 +2,7 @@ import React from 'react';
 
 import Wrapper from '@/components/Wrapper';
 import ProductCard from '@/components/ProductCard';
+import { fetchDataFromApi } from '@/utils/api';
 
 const Category = () => {
 
@@ -36,3 +37,18 @@ const Category = () => {
 }
 
 export default Category;
+
+export getStaticPaths = async () => {
+    const category = await fetchDataFromApi ("/products/categories");
+
+    const paths = category.data.map((c) => ({
+        params: {
+            slug: c
+        }
+    }))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
