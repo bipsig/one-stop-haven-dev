@@ -14,7 +14,7 @@ export const generateSubmenuData = (categories) => {
     // console.log (categories?.[0]);
 
     for (let i = 0; i < categories?.length; i++) {
-        console.log (categories?.[i]);
+        // console.log (categories?.[i]);
 
         let categoryPath = categories?.[i];
         let categoryName = capitalizeEveryWord (categoryPath);
