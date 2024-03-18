@@ -32,7 +32,7 @@ export const generateSubmenuData = (categories) => {
     return subMenuData;
 }
 
-function capitalizeEveryWord(str) {
+export const capitalizeEveryWord = (str) => {
     let ans = "";
 
     for (let i = 0; i < str.length; i++) {
