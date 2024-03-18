@@ -24,15 +24,6 @@ const ProductDetails = () => {
         setCategory(capitalizeEveryWord(product?.category || ""));
     }, [product]);
 
-    useEffect(() => {
-        if (category) {
-            fetchRelatedProducts();
-        }
-    }, [category]);
-
-    // useEffect(() => {
-    //     console.log (relatedProducts);
-    // }, [relatedProducts]);
 
     const fetchData = async () => {
         try {
@@ -40,15 +31,6 @@ const ProductDetails = () => {
             setProduct(productData);
         } catch (error) {
             console.error('Error fetching product data:', error);
-        }
-    };
-
-    const fetchRelatedProducts = async () => {
-        try {
-            const relatedProductsData = await fetchDataFromApi(`/products/category/${product?.category}`);
-            setRelatedProducts(relatedProductsData);
-        } catch (error) {
-            console.error('Error fetching related products:', error);
         }
     };
 
@@ -70,7 +52,7 @@ const ProductDetails = () => {
                         </div>
 
                         <div className="text-lg font-semibold">
-                            MRP : Rs. {product?.price * 82}
+                            MRP : Rs. {(product?.price * 82).toFixed (2)}
                         </div>
                         <div className="text-md font-medium text-black/[0.5]">
                             incl. of taxes
@@ -99,7 +81,8 @@ const ProductDetails = () => {
                     </div>
                 </div>
 
-                {/* <RelatedProducts related={relatedProducts}/> */}
+
+                <RelatedProducts product={product?.title} category={product?.category}/>
             </Wrapper>
         </div>
     );
