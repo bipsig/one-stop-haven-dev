@@ -56,7 +56,7 @@ const Footer = () => {
                         {/* MENU START */}
                         <div className="flex flex-col gap-3">
                             <div className="font-oswald font-medium uppercase text-sm">
-                                About Sneaker Sphere
+                                About One Stop Haven
                             </div>
                             <div className="text-sm text-white/[0.5] hover:text-white cursor-pointer">
                                 News
