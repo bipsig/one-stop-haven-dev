@@ -39,6 +39,7 @@ You can check out the live demo of the application [here](https://one-stop-haven
 
 - Implement cart functionality using Redux
 - Enable user logins using the available feature in the FakeStoreAPI
+- Add a skeleton structure for the products for the time when the API call is still in function
 
 ## Acknowledgments
 
