@@ -97,7 +97,7 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <Link href="/cart">
+                    <Link href="/">
                         <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
 
                             <AiOutlineShoppingCart className="text-[20px] md:text-[30px]" />
